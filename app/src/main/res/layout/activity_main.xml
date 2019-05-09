@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".MainActivity">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="46dp"
+        android:background="#ffffff"
+        android:src="@drawable/leffr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="88dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Verify Number"
+        android:textColor="#0A0819"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/pin"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/pinback"
+        android:text="  +91"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/phonenm"
+        android:layout_width="294dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="29dp"
+        android:background="@drawable/pinback"
+        android:hint="Enter your phone number"
+        android:paddingLeft="22dp"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/getotp"
+        android:layout_width="360dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="225dp"
+        android:layout_marginEnd="29dp"
+        android:background="@drawable/getoptbck"
+        android:text="GET OTP"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:background="@drawable/blacktrans" />
+
+    <android.support.v7.widget.CardView
+        android:layout_width="363dp"
+        android:layout_height="203dp"
+        android:id="@+id/card"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/whitebck"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="26dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Confirm verification code"
+                android:textColor="#0A0819"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="153dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Re-send"
+                android:textColor="#FF316A"
+                android:textSize="15dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.goodiebag.pinview.Pinview
+                android:id="@+id/pincode"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+                app:cursorVisible="false"
+                app:forceKeyboard="true"
+                app:hint='0'
+                app:inputType="number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:password="false"
+                app:pinHeight="40dp"
+                app:pinLength="6"
+                app:pinWidth="30dp">
+
+            </com.goodiebag.pinview.Pinview>
+
+            <Button
+                android:id="@+id/verifysub"
+                android:layout_width="141dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="137dp"
+                android:layout_marginEnd="13dp"
+                android:background="@drawable/getoptbck"
+                android:text="OK"
+                android:textColor="#ffffff"
+                android:fontFamily="@font/montserrat_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>

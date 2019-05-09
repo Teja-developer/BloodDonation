@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".RequestBlood">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="46dp"
+        android:background="#ffffff"
+        android:src="@drawable/leffr"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="66dp"
+        android:layout_marginTop="41dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Request for Blood"
+        android:textColor="#0A0819"
+        android:textSize="18dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="90dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Blood for"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="302dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="121dp"
+        android:layout_marginEnd="29dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/greybck"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="195dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="City Preference"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="302dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="226dp"
+        android:layout_marginEnd="29dp"
+        android:paddingStart="10dp"
+        android:background="@drawable/greybck"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="321dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Select Blood Group"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/apos"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="361dp"
+        android:src="@drawable/group310"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/aneg"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="361dp"
+        android:src="@drawable/group311"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/bneg"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="361dp"
+        android:src="@drawable/group312"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/bpos"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="361dp"
+        android:src="@drawable/group319"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/opos"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginTop="361dp"
+        android:src="@drawable/group313"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/oneg"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="361dp"
+        android:src="@drawable/group318"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/abneg"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="413dp"
+        android:src="@drawable/group316"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/abpos"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="413dp"
+        android:src="@drawable/group317"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:layout_width="342dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="605dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/getoptbck"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="SUBMIT"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

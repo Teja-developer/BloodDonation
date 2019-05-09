@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">BloodDonation</string>
+    <string name="login_register"><![CDATA[LOGIN & REGISTER]]></string>
+    <string name="Open">open</string>
+    <string name="Close">close</string>
+    <string name="facebook_app_id">2155607157868890</string>
+    <string name="fb_login_protocol_scheme">fb2155607157868890</string>
+    <string name="start">start</string>
+    <string name="next">next</string>
+</resources>
