@@ -19,6 +19,8 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -35,6 +37,9 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -101,17 +106,23 @@ public class LoginScreen extends AppCompatActivity {
         //Facebook
         mCallbackManager = CallbackManager.Factory.create();
         Button loginButton = findViewById(R.id.facebook);
+
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LoginManager.getInstance().logInWithReadPermissions(
-                        LoginScreen.this, Arrays.asList("email", "public_profile"));
+                        LoginScreen.this, Arrays.asList("email", "public_profile","name"));
+
                 LoginManager.getInstance().registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+
+
                     @Override
                     public void onSuccess(LoginResult loginResult) {
                         Log.i(TAG, "facebook:onSuccess:" + loginResult);
                         handleFacebookAccessToken(loginResult.getAccessToken());
                         Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
+
                     }
 
                     @Override
@@ -192,7 +203,7 @@ public class LoginScreen extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.i(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
@@ -229,5 +240,6 @@ public class LoginScreen extends AppCompatActivity {
                     }
                 });
     }
+
 
 }

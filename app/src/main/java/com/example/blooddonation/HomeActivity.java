@@ -20,8 +20,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Objects;
 
@@ -36,7 +42,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
 
 
         //Toolbar ..
@@ -116,6 +121,7 @@ public class HomeActivity extends AppCompatActivity {
         View n = nv.getHeaderView(0);
 
 
+        //Code for knowing the google username i.e if the user signs up via google
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
             String name = acct.getDisplayName();
@@ -126,6 +132,10 @@ public class HomeActivity extends AppCompatActivity {
             usrnm = n.findViewById(R.id.userName);
 
             usrnm.setText(cap);
+        } else {
+            usrnm = n.findViewById(R.id.userName);
+
+            getFbInfo();
         }
 
     }
@@ -150,4 +160,45 @@ public class HomeActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    private void getFbInfo() {
+        GraphRequest request = GraphRequest.newMeRequest(
+                AccessToken.getCurrentAccessToken(),
+                new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(
+                            JSONObject object,
+                            GraphResponse response) {
+                        try {
+//                            Log.d(LOG_TAG, "fb json object: " + object);
+//                            Log.d(LOG_TAG, "fb graph response: " + response);
+
+                            String id = object.getString("id");
+                            String first_name = object.getString("first_name");
+                            String last_name = object.getString("last_name");
+//                            String gender = object.getString("gender");
+//                            String birthday = object.getString("birthday");
+//                            String image_url = "http://graph.facebook.com/" + id + "/picture?type=large";
+
+                            if (first_name != null && last_name != null)
+                                usrnm.setText(String.format("%s %s", first_name, last_name));
+
+                            String email;
+                            if (object.has("email")) {
+                                email = object.getString("email");
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "error in name", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        Bundle parameters = new Bundle();
+        parameters.putString("fields", "id,first_name,last_name,email,gender,birthday"); // id,first_name,last_name,email,gender,birthday,cover,picture.type(large)
+        request.setParameters(parameters);
+        request.executeAsync();
+    }
+
+
 }
