@@ -32,7 +32,11 @@
 
         </activity>
         <activity android:name=".LoginScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
 
@@ -43,16 +47,13 @@
 
         </activity>
         <activity android:name=".spmain" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".sp3" />
         <activity android:name=".sp2" />
         <activity android:name=".sp1" />
         <activity android:name=".BecomeDonor">
+
         </activity>
 
         <meta-data

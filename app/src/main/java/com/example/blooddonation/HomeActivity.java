@@ -1,5 +1,7 @@
 package com.example.blooddonation;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,11 +37,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+
         //Toolbar ..
         Toolbar toolbar = findViewById(R.id.toolbar);
 //        toolbar.setTitle("Red Blood");
         toolbar.setBackgroundColor(getResources().getColor(R.color.main));
 
+        //Code for removing default title in toolbar
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -50,7 +56,6 @@ public class HomeActivity extends AppCompatActivity {
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         nv = findViewById(R.id.nv);
-
 
         Button alldonors = findViewById(R.id.find_donor_button);
         alldonors.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +75,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //Code for listening to navigation items in navigation bar.
         nv.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -105,6 +111,7 @@ public class HomeActivity extends AppCompatActivity {
         dl.addDrawerListener(t);
         t.syncState();
 
+        //code for changing the hamburger
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ham);
         View n = nv.getHeaderView(0);
 
@@ -129,6 +136,7 @@ public class HomeActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.home_search, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

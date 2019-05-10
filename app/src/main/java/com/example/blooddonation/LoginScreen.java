@@ -2,9 +2,13 @@ package com.example.blooddonation;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -32,6 +36,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 public class LoginScreen extends AppCompatActivity {
@@ -50,7 +56,7 @@ public class LoginScreen extends AppCompatActivity {
 
         if (mAuth.getCurrentUser() != null) {
             //Switching to MainScreen if the user already logged in
-            Intent launchActivity = new Intent(getApplicationContext(), MainActivity.class);
+            Intent launchActivity = new Intent(getApplicationContext(), HomeActivity.class);
             launchActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(launchActivity);
         }
@@ -75,7 +81,7 @@ public class LoginScreen extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if (firebaseAuth.getCurrentUser() != null) {
-                    Intent launchNextActivity = new Intent(getApplicationContext(), MainActivity.class);
+                    Intent launchNextActivity = new Intent(getApplicationContext(), HomeActivity.class);
                     launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -105,6 +111,7 @@ public class LoginScreen extends AppCompatActivity {
                     public void onSuccess(LoginResult loginResult) {
                         Log.i(TAG, "facebook:onSuccess:" + loginResult);
                         handleFacebookAccessToken(loginResult.getAccessToken());
+                        Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -122,6 +129,23 @@ public class LoginScreen extends AppCompatActivity {
 
             }
         });
+
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.example.blooddonation",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.i("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -147,12 +171,14 @@ public class LoginScreen extends AppCompatActivity {
                 Log.i(TAG, "Google sign in failed", e);
                 // ...
             }
-            try {
-                mCallbackManager.onActivityResult(requestCode, resultCode, data);
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(),"Error ",Toast.LENGTH_SHORT).show();
-                e.printStackTrace();
-            }
+
+        }
+        try {
+            mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.i("KeyHash:", "Error");
+
         }
     }
 
@@ -166,6 +192,8 @@ public class LoginScreen extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.i(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.i(TAG, "signInWithCredential:failure", task.getException());
@@ -188,12 +216,12 @@ public class LoginScreen extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.i(TAG, "signInWithCredential:success");
+                            Log.i("KeyHash:", "Success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(getApplicationContext(),"Reached",Toast.LENGTH_SHORT).show();
                             Log.i(TAG, "signInWithCredential:failure", task.getException());
                         }
 

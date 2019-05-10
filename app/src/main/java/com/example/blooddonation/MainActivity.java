@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.goodiebag.pinview.Pinview;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button getotp,verify;
     EditText phone;
+    TextView resen;
     private FirebaseAuth mAuth;
     private boolean mVerificationInProgress = false;
     private String mVerificationId;
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         cardView = findViewById(R.id.card);
         blur = findViewById(R.id.imageView4);
         getotp = findViewById(R.id.getotp);
+        resen = findViewById(R.id.resend);
 
         mAuth = FirebaseAuth.getInstance();
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
@@ -71,6 +74,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        resen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resendVerificationCode(phone.getText().toString(),mResendToken);
+            }
+        });
+
+    }
+
+    private void resendVerificationCode(String phoneNumber,
+                                        PhoneAuthProvider.ForceResendingToken token) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                "+91"+phoneNumber,        // Phone number to verify
+                60,                 // Timeout duration
+                TimeUnit.SECONDS,   // Unit of timeout
+                this,               // Activity (for callback binding)
+                mCallbacks,         // OnVerificationStateChangedCallbacks
+                token);             // ForceResendingToken from callbacks
     }
 
     public void verifySignInCode(){
@@ -86,6 +107,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_SHORT).show();
+                            //Code for removing soft keyboard
+                            View view = getCurrentFocus();
+                            if (view != null) {
+                                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                            }
                             Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
                             startActivity(intent);
                             // ...
@@ -122,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
             mVerificationId = s;
+            mResendToken = forceResendingToken;
         }
     };
 
