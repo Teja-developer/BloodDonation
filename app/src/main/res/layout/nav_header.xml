@@ -13,14 +13,19 @@
     android:paddingBottom="18dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
+    <Button
         android:id="@+id/profilePic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/circle_background2"
         android:contentDescription="Image"
-        android:paddingTop="10dp"
+        android:text="A"
+        android:textColor="#000"
+        android:fontFamily="@font/montserrat_bold"
+        android:textSize="25sp"
+        android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/photo" />
@@ -31,16 +36,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/montserrat_bold"
         android:paddingTop="10dp"
         android:text="User Name"
-        android:fontFamily="@font/montserrat_bold"
-        android:textSize="18sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textColor="#000000"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profilePic" />
-
 
 
 </android.support.constraint.ConstraintLayout>

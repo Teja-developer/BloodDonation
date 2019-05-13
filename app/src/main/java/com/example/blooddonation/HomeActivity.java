@@ -35,8 +35,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle t;
     private NavigationView nv;
-    private TextView usrnm, emaild;
-
+    private TextView usrnm;
+    private Button propic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +122,11 @@ public class HomeActivity extends AppCompatActivity {
 
 
         //Code for knowing the google username i.e if the user signs up via google
+
+        //Initialization of views in navigation bar.
+        usrnm = n.findViewById(R.id.userName);
+        propic = n.findViewById(R.id.profilePic);
+
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
         if (acct != null) {
             String name = acct.getDisplayName();
@@ -129,12 +134,11 @@ public class HomeActivity extends AppCompatActivity {
             assert name != null;
             String cap = name.substring(0, 1).toUpperCase() + name.substring(1);
             Log.i("name_of_acct", name);
-            usrnm = n.findViewById(R.id.userName);
 
+
+            propic.setText(String.valueOf(cap.charAt(0)));
             usrnm.setText(cap);
         } else {
-            usrnm = n.findViewById(R.id.userName);
-
             getFbInfo();
         }
 
@@ -180,9 +184,10 @@ public class HomeActivity extends AppCompatActivity {
 //                            String birthday = object.getString("birthday");
 //                            String image_url = "http://graph.facebook.com/" + id + "/picture?type=large";
 
-                            if (first_name != null && last_name != null)
+                            if (first_name != null && last_name != null) {
                                 usrnm.setText(String.format("%s %s", first_name, last_name));
-
+                                propic.setText(String.valueOf(first_name.charAt(0)));
+                            }
                             String email;
                             if (object.has("email")) {
                                 email = object.getString("email");

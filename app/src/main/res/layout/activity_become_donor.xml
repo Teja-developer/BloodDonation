@@ -31,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/name_donor"
         android:layout_width="342dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -44,6 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:id="@+id/email_donor"
         android:layout_width="342dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -123,6 +125,7 @@
         android:textSize="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView2" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,6 +147,7 @@
         android:src="@drawable/group310"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/aneg"
         android:layout_width="41dp"
@@ -153,6 +157,7 @@
         android:src="@drawable/group311"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/bneg"
         android:layout_width="41dp"
@@ -162,6 +167,7 @@
         android:src="@drawable/group312"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/bpos"
         android:layout_width="41dp"
@@ -171,6 +177,7 @@
         android:src="@drawable/group319"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/opos"
         android:layout_width="41dp"
@@ -180,6 +187,7 @@
         android:src="@drawable/group313"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/oneg"
         android:layout_width="41dp"
@@ -189,6 +197,7 @@
         android:src="@drawable/group318"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/abneg"
         android:layout_width="41dp"
@@ -198,6 +207,7 @@
         android:src="@drawable/group316"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/abpos"
         android:layout_width="41dp"
@@ -209,6 +219,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
+        android:id="@+id/visibility"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -219,6 +230,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/submit"
         android:layout_width="342dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
