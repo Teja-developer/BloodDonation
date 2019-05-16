@@ -1,5 +1,6 @@
 package com.blood.blooddonation;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -15,17 +17,19 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
 public class RequestBlood extends AppCompatActivity {
 
-    ImageView aposi,anega,bnega,bposi,oposi,onega,abposi,abnega,male,female;
-    int i=1,j=1,k=1,l=1,m=1,n=1,o=1,p=1,q=1;
+    ImageView aposi, anega, bnega, bposi, oposi, onega, abposi, abnega, male, female;
+    int i = 1, j = 1, k = 1, l = 1, m = 1, n = 1, o = 1, p = 1, q = 1;
     Button submit;
     String bloodgroup;
-    EditText name,location,hospital,phonenum;
+    EditText name, location, hospital, phonenum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,17 +53,17 @@ public class RequestBlood extends AppCompatActivity {
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
-        String[] bloodfor = { "Friend", "Father", "Mother", "Relative", "Others" };
+        String[] bloodfor = {"Friend", "Father", "Mother", "Relative", "Others"};
         final Spinner spin1 = (Spinner) findViewById(R.id.spinner1);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, bloodfor);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spin1.setAdapter(adapter1);
 
-        String[] citypref = { "Mumbai", "Chennai", "Visakhapatnam", "Hyderabad", "Bangalore" };
-        Spinner spin2 = (Spinner) findViewById(R.id.spinner2);
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, citypref);
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin2.setAdapter(adapter2);
+//        String[] citypref = {"Mumbai", "Chennai", "Visakhapatnam", "Hyderabad", "Bangalore"};
+//        Spinner spin2 = (Spinner) findViewById(R.id.spinner2);
+//        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, citypref);
+//        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spin2.setAdapter(adapter2);
 
         aposi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,26 +188,29 @@ public class RequestBlood extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                request(spin1.getSelectedItem().toString(),"Hyderabad",bloodgroup,name.getText().toString(),location.getText().toString(),hospital.getText().toString(),phonenum.getText().toString());
+                request(spin1.getSelectedItem().toString(), "Hyderabad", bloodgroup, name.getText().toString(), location.getText().toString(), hospital.getText().toString(), phonenum.getText().toString());
             }
         });
     }
 
-    private void request(String toString, String hyderabad, String bloodgroup, String name, String location, String hospital, String phonenum) {
+    private void request(String toString, String city, String bloodgroup, String name, String location, String hospital, String phonenum) {
 
         final RequestParams params = new RequestParams();
 
-        params.put("name",name);
-        params.put("whatsapp","9704800766");
-        params.put("mobile",phonenum);
-        params.put("relation",toString);
-        params.put("needed_by","skdafjhk");
-        params.put("bloodgrp",bloodgroup);
-        params.put("city",hyderabad);
-        params.put("area",location);
-        params.put("google_loc","fsdfjsd");
-        params.put("status",false);
-        params.put("hospital",hospital);
+        params.put("name", name);
+        params.put("whatsapp", "9704800766");
+        params.put("mobile", phonenum);
+        params.put("relation", toString);
+        params.put("needed_by", "skdafjhk");
+        params.put("bloodgrp", bloodgroup);
+        params.put("city", city);
+        params.put("area", location);
+        params.put("google_loc", "fsdfjsd");
+        params.put("status", false);
+        params.put("hospital", hospital);
+
+        final String fcity = city;
+        final String fbloodgroup = bloodgroup;
 
         String request_url = "https://bloodtransfer.herokuapp.com/index.php/data/reciever";
         AsyncHttpClient client = new AsyncHttpClient();
@@ -213,21 +220,71 @@ public class RequestBlood extends AppCompatActivity {
                 Log.i("JSON", "JSON is " + response.toString());
                 Log.i("JSON", "Status  code" + statusCode);
                 Log.i("JSON", response.toString());
-                Toast.makeText(getApplicationContext(),"Request Success",Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getApplicationContext(), "Request Success :)", Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(), FilteredResult.class);
+                intent.putExtra("json", response.toString());
+                startActivity(intent);
+
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 Toast.makeText(getApplicationContext(), "Request Failed:(", Toast.LENGTH_SHORT).show();
                 Log.i("JSON", "Status code" + statusCode);
-                Log.i("JSON",errorResponse.toString());
+                Log.i("JSON", errorResponse.toString());
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                Toast.makeText(getApplicationContext(), "Request Success:(", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Request Success :)", Toast.LENGTH_SHORT).show();
                 Log.i("JSON", "Status  code" + statusCode);
                 Log.i("JSON", responseString);
+
+
+                Intent intent = new Intent(getApplicationContext(), FilteredResult.class);
+                intent.putExtra("city", fcity);
+                intent.putExtra("blood", fbloodgroup);
+                startActivity(intent);
+            }
+        });
+
+        donors();
+    }
+
+    private void donors() {
+        String displayurl = "https://bloodtransfer.herokuapp.com/index.php/data/searchall";
+
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        RequestParams params = new RequestParams();
+
+        client.post(displayurl, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.i("JSON", "JSON is " + response.toString());
+                Log.i("JSON", "Status  code" + statusCode);
+                Log.i("JSON", response.toString());
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Toast.makeText(getApplicationContext(), "Request Failed:(", Toast.LENGTH_SHORT).show();
+                Log.i("JSON", "Status code" + statusCode);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.i("JSON", "Status  code" + statusCode);
+                Log.i("JSON", responseString);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                Log.i("JSON", response.toString());
+                Log.i("JSON", "Length " + response.length());
+
             }
         });
     }

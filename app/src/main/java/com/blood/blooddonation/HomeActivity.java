@@ -1,6 +1,7 @@
 package com.blood.blooddonation;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -22,9 +23,15 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -32,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
     private NavigationView nv;
     private TextView usrnm;
     private Button propic;
+    boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +144,7 @@ public class HomeActivity extends AppCompatActivity {
         } else {
             getFbInfo();
         }
-
+        count();
     }
 
     @Override
@@ -201,4 +209,96 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            finishAffinity();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click back again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
+
+    private void count() {
+        String don_url = "https://bloodtransfer.herokuapp.com/index.php/data/count/users";
+        String rec_url = "https://bloodtransfer.herokuapp.com/index.php/data/count/bloodrequest";
+        AsyncHttpClient client = new AsyncHttpClient();
+
+        client.post(don_url, null, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.i("JSON", "JSON is " + response.toString());
+                Log.i("JSON", response.toString());
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.i("JSON", "Status code" + statusCode);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Toast.makeText(getApplicationContext(), "Request Success:)", Toast.LENGTH_SHORT).show();
+                Log.i("JSON", responseString);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                Log.i("JSON", response.toString());
+                TextView don_count, don_count2;
+                don_count =findViewById(R.id.don_count_home);
+
+                try {
+                    JSONObject obj = (JSONObject) response.get(0);
+                    don_count.setText(obj.getString("count(*)"));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        client.post(rec_url, null, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.i("JSON", "JSON is " + response.toString());
+                Log.i("JSON", response.toString());
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                Log.i("JSON", "Status code" + statusCode);
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Toast.makeText(getApplicationContext(), "Request Success:)", Toast.LENGTH_SHORT).show();
+                Log.i("JSON", responseString);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray response) {
+                Log.i("JSON", response.toString());
+                TextView  don_count2;
+                don_count2 =findViewById(R.id.don_count2_home);
+
+                try {
+                    JSONObject obj = (JSONObject) response.get(0);
+                    don_count2.setText(obj.getString("count(*)"));
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }

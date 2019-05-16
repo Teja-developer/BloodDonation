@@ -1,6 +1,8 @@
 package com.blood.blooddonation;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -73,6 +76,13 @@ public class Donors extends AppCompatActivity {
         toolbar.setNavigationIcon(drawable);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -177,19 +187,34 @@ public class Donors extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            convertView = getLayoutInflater().inflate(R.layout.cardview,null);
+            convertView = getLayoutInflater().inflate(R.layout.cardview, null);
 
             TextView name = convertView.findViewById(R.id.name_card);
             TextView place = convertView.findViewById(R.id.place);
             TextView blood = convertView.findViewById(R.id.blood_group_card);
             TextView last_d = convertView.findViewById(R.id.last_donated_card);
+            Button contact = convertView.findViewById(R.id.help);
+
             try {
-                JSONObject object = result.getJSONObject(position);
+                final JSONObject object = result.getJSONObject(position);
                 name.setText(object.getString("name"));
                 place.setText(object.getString("city"));
                 blood.setText(object.getString("bloodgroup"));
-                last_d.setText("Last donated on "+object.getString("last_donated"));
-
+                last_d.setText("Last donated on " + object.getString("last_donated"));
+                contact.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.i("JSON", "Calling");
+                        Toast.makeText(getApplicationContext(), "Calling..", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Intent.ACTION_DIAL);
+                        try {
+                            intent.setData(Uri.parse("tel:" + object.getString("mobile")));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        startActivity(intent);
+                    }
+                });
             } catch (JSONException e) {
                 e.printStackTrace();
             }

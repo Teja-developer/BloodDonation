@@ -302,6 +302,10 @@ public class BecomeDonor extends AppCompatActivity {
         });
     }
 
+    public void back(View view){
+        finish();
+    }
+
     private void get_city() {
        lat = location.getLatitude();
        lon = location.getLongitude();
@@ -358,7 +362,7 @@ public class BecomeDonor extends AppCompatActivity {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                    Toast.makeText(getApplicationContext(), "Request Failed:(", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Request Success:)", Toast.LENGTH_SHORT).show();
                     Log.i("JSON", "Status  code" + statusCode);
                     Log.i("JSON", responseString);
                 }

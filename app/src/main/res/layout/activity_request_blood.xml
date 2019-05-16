@@ -7,6 +7,7 @@
     android:background="#ffffff"
     tools:context=".RequestBlood">
     <ImageButton
+        android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -29,8 +30,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <ScrollView
+        android:elevation="3dp"
         android:layout_width="match_parent"
-        android:layout_height="470dp"
+        android:layout_height="495dp"
         android:paddingBottom="10dp"
         app:layout_constraintTop_toTopOf="@+id/title"
         android:layout_marginTop="44dp">
@@ -65,31 +67,31 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/bloodfor" />
 
-            <TextView
-                android:id="@+id/citypref"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="64dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="City Preference"
-                android:textColor="#000000"
-                android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/spinner1" />
+            <!--<TextView-->
+                <!--android:id="@+id/citypref"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="32dp"-->
+                <!--android:layout_marginTop="64dp"-->
+                <!--android:fontFamily="@font/montserrat_bold"-->
+                <!--android:text="City Preference"-->
+                <!--android:textColor="#000000"-->
+                <!--android:textSize="14dp"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@id/spinner1" />-->
 
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="302dp"
-                android:layout_height="45dp"
-                android:layout_marginStart="29dp"
-                android:layout_marginTop="146dp"
-                android:layout_marginEnd="29dp"
-                android:paddingStart="10dp"
-                android:background="@drawable/greybck"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <!--<Spinner-->
+                <!--android:id="@+id/spinner2"-->
+                <!--android:layout_width="302dp"-->
+                <!--android:layout_height="45dp"-->
+                <!--android:layout_marginStart="29dp"-->
+                <!--android:layout_marginTop="146dp"-->
+                <!--android:layout_marginEnd="29dp"-->
+                <!--android:paddingStart="10dp"-->
+                <!--android:background="@drawable/greybck"-->
+                <!--app:layout_constraintEnd_toEndOf="parent"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="parent" />-->
 
             <TextView
                 android:id="@+id/sbg"
@@ -102,7 +104,7 @@
                 android:textColor="#000000"
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/spinner2" />
+                app:layout_constraintTop_toTopOf="@id/spinner1" />
 
             <ImageView
                 android:id="@+id/apos"
