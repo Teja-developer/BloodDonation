@@ -4,7 +4,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.blooddonation"
+        applicationId "com.blood.blooddonation"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -36,6 +36,7 @@ dependencies {
     implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
     implementation 'com.github.GoodieBag:Pinview:v1.3'
     implementation 'com.google.android.gms:play-services-base:16.1.0'
-    implementation 'com.google.android.gms:play-services-auth-api-phone:16.0.0'
-
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'cz.msebera.android:httpclient:4.3.6'
 }

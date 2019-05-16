@@ -1,4 +1,4 @@
-package com.example.blooddonation;
+package com.blood.blooddonation;
 
 import org.junit.Test;
 

@@ -1,10 +1,9 @@
-package com.example.blooddonation;
+package com.blood.blooddonation;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 public class spmain extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.blooddonation;
+package com.blood.blooddonation;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,8 +18,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.blooddonation.BecomeDonor;
-import com.example.blooddonation.R;
+import com.blood.blooddonation.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 

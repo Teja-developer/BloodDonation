@@ -8,20 +8,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:657983068376:android:6fce81051b395a3e",
+        "mobilesdk_app_id": "1:657983068376:android:2230b60b18242095",
         "android_client_info": {
-          "package_name": "com.example.blooddonation"
+          "package_name": "com.blood.blooddonation"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "657983068376-0cbdgdgovj1ph0alu1hnl8va4n2rk14d.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.blooddonation",
-            "certificate_hash": "e3ed78158c83aa35a8260ffb80a9ade0bdca82ce"
-          }
-        },
         {
           "client_id": "657983068376-osutgm2qj3favu8lufg2bprquj19finn.apps.googleusercontent.com",
           "client_type": 3

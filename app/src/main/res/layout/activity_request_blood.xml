@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     tools:context=".RequestBlood">
-
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="66dp"
@@ -28,143 +28,272 @@
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="470dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toTopOf="@+id/title"
+        android:layout_marginTop="44dp">
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="90dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Blood for"
-        android:textColor="#000000"
-        android:textSize="14dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner1"
-        android:layout_width="302dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="121dp"
-        android:layout_marginEnd="29dp"
-        android:paddingStart="10dp"
-        android:background="@drawable/greybck"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/bloodfor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Blood for"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="195dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="City Preference"
-        android:textColor="#000000"
-        android:textSize="14dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="302dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="31dp"
+                android:layout_marginEnd="29dp"
+                android:paddingStart="10dp"
+                android:background="@drawable/greybck"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/bloodfor" />
 
-    <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="302dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="226dp"
-        android:layout_marginEnd="29dp"
-        android:paddingStart="10dp"
-        android:background="@drawable/greybck"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/citypref"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="64dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="City Preference"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/spinner1" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="321dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Select Blood Group"
-        android:textColor="#000000"
-        android:textSize="14dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="302dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="146dp"
+                android:layout_marginEnd="29dp"
+                android:paddingStart="10dp"
+                android:background="@drawable/greybck"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/apos"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="361dp"
-        android:src="@drawable/group310"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/aneg"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="361dp"
-        android:src="@drawable/group311"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/bneg"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="361dp"
-        android:src="@drawable/group312"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/bpos"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="188dp"
-        android:layout_marginTop="361dp"
-        android:src="@drawable/group319"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/opos"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="361dp"
-        android:src="@drawable/group313"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/oneg"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="292dp"
-        android:layout_marginTop="361dp"
-        android:src="@drawable/group318"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/abneg"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="413dp"
-        android:src="@drawable/group316"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <ImageView
-        android:id="@+id/abpos"
-        android:layout_width="41dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="413dp"
-        android:src="@drawable/group317"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/sbg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="70dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Select Blood Group"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/spinner2" />
 
+            <ImageView
+                android:id="@+id/apos"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="44dp"
+                android:src="@drawable/group310"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/sbg" />
+            <ImageView
+                android:id="@+id/aneg"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="44dp"
+                android:src="@drawable/group311"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/sbg" />
+            <ImageView
+                android:id="@+id/bneg"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="136dp"
+                android:layout_marginTop="44dp"
+                android:src="@drawable/group312"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/sbg" />
+            <ImageView
+                android:id="@+id/bpos"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="188dp"
+                android:layout_marginTop="44dp"
+                android:src="@drawable/group319"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/sbg" />
+            <ImageView
+                android:id="@+id/opos"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="44dp"
+                android:src="@drawable/group313"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/sbg" />
+            <ImageView
+                android:id="@+id/oneg"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="292dp"
+                android:layout_marginTop="44dp"
+                android:src="@drawable/group318"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/sbg" />
+            <ImageView
+                android:id="@+id/abneg"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="54dp"
+                android:src="@drawable/group316"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/oneg" />
+            <ImageView
+                android:id="@+id/abpos"
+                android:layout_width="41dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="54dp"
+                android:src="@drawable/group317"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/oneg" />
+
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="64dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Name"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/abpos" />
+
+
+            <EditText
+                android:id="@+id/nam"
+                android:layout_width="302dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/pinback"
+                android:hint="Name"
+                android:paddingStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/name" />
+
+
+            <TextView
+                android:id="@+id/area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="62dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Location"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/nam" />
+
+            <EditText
+                android:id="@+id/are"
+                android:layout_width="302dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/pinback"
+                android:hint="Location"
+                android:paddingStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/area" />
+
+            <TextView
+                android:id="@+id/hospital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="62dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Hospital"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/are" />
+
+            <EditText
+                android:id="@+id/hos"
+                android:layout_width="302dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/pinback"
+                android:hint="Hospital"
+                android:paddingStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/hospital" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="62dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Contact Number"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/hos" />
+
+            <EditText
+                android:id="@+id/ph"
+                android:layout_width="302dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/pinback"
+                android:hint="Number"
+                android:paddingStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/phone" />
+
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
     <Button
+        android:id="@+id/sub"
         android:layout_width="342dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
@@ -176,5 +305,5 @@
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

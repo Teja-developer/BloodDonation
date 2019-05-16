@@ -1,4 +1,4 @@
-package com.example.blooddonation;
+package com.blood.blooddonation;
 
 public class Attributes {
     private String gender, bloodgroup, uid, pid, date, month, year, name, email, visibility;
