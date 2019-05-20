@@ -147,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
         params.put("mobile_number", number);
 
         Log.i("JSON", "no:" + number);
+        // Oauth/sendsms/(message)/(phno)/
         String otp_url = "https://bloodtransfer.herokuapp.com/index.php/Oauth/otp";
 
         AsyncHttpClient client = new AsyncHttpClient();

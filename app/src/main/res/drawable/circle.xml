@@ -1,11 +1,12 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:innerRadius="0dp"
-    android:shape="ring"
-    android:thicknessRatio="1.9"
-    android:useLevel="false" >
-    <solid android:color="@android:color/transparent" />
-
-    <stroke
-        android:width="10dp"
-        android:color="@android:color/white" />
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FF215D" />
+    <corners
+        android:topLeftRadius="30dp"
+        android:topRightRadius="30dp"
+        android:bottomLeftRadius="30dp"
+        android:bottomRightRadius="30dp"
+        />
+    <size
+        android:height="50dp"
+        android:width="50dp"/>
 </shape>

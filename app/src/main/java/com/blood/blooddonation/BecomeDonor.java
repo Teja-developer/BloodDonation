@@ -4,6 +4,7 @@ package com.blood.blooddonation;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,6 +14,8 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -60,6 +63,7 @@ public class BecomeDonor extends AppCompatActivity {
     double lon;
     Location location;
     private LocationManager locationManager;
+    int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +92,9 @@ public class BecomeDonor extends AppCompatActivity {
             //                                          int[] grantResults)
             // to handle the case where the user grants the permission. See the documentation
             // for ActivityCompat#requestPermissions for more details.
+            ActivityCompat.requestPermissions(BecomeDonor.this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
             return;
         }
 
@@ -96,6 +103,7 @@ public class BecomeDonor extends AppCompatActivity {
         city.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.i("JSON","REached");
                     get_city();
             }
         });
@@ -305,6 +313,31 @@ public class BecomeDonor extends AppCompatActivity {
     public void back(View view){
         finish();
     }
+
+//    private void requestPermissions() {
+//
+//        if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_COARSE_LOCATION)){
+//            new AlertDialog.Builder(this)
+//                    .setTitle("Permission Needed")
+//                    .setMessage("This permission is needed to fetch your current city")
+//                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            ActivityCompat.requestPermissions(BecomeDonor.this,new String[] {Manifest.permission.ACCESS_COARSE_LOCATION},LOCATION_PERMISSION_CODE);
+//                        }
+//                    })
+//                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    })
+//                    .create().show();
+//        }
+//        else{
+//            ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.ACCESS_COARSE_LOCATION},LOCATION_PERMISSION_CODE);
+//        }
+//    }
 
     private void get_city() {
        lat = location.getLatitude();

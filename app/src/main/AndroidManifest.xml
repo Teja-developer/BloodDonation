@@ -18,26 +18,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".FilteredResult"></activity>
+        <activity android:name=".AskForHelp"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
+        <activity android:name=".FilteredResult" />
         <activity android:name=".AskUser" />
         <activity android:name=".Donors" />
         <activity
             android:name=".RequestActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            />
         <activity
             android:name=".HomeActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".LoginScreen">
+        <activity android:name=".LoginScreen"></activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".WelcomeActivity" />
+        <activity android:name=".RequestBlood" />
+        <activity android:name=".spmain">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".WelcomeActivity" />
-        <activity android:name=".RequestBlood" />
-        <activity android:name=".spmain" />
         <activity android:name=".sp3" />
         <activity android:name=".sp2" />
         <activity android:name=".sp1" />

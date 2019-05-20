@@ -193,6 +193,7 @@ public class Donors extends AppCompatActivity {
             TextView place = convertView.findViewById(R.id.place);
             TextView blood = convertView.findViewById(R.id.blood_group_card);
             TextView last_d = convertView.findViewById(R.id.last_donated_card);
+            TextView image = convertView.findViewById(R.id.photo);
             Button contact = convertView.findViewById(R.id.help);
 
             try {
@@ -204,17 +205,21 @@ public class Donors extends AppCompatActivity {
                 contact.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Log.i("JSON", "Calling");
-                        Toast.makeText(getApplicationContext(), "Calling..", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Intent.ACTION_DIAL);
+
+                        Intent intent = new Intent(getApplicationContext(), AskForHelp.class);
                         try {
-                            intent.setData(Uri.parse("tel:" + object.getString("mobile")));
+                            intent.putExtra("don_name", object.getString("name"));
+                            intent.putExtra("number", object.getString("mobile"));
+                            //intent.putExtra("id",object.getString("id"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                         startActivity(intent);
                     }
                 });
+                String fl = object.getString("name").substring(0, 1);
+                image.setText(fl);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }

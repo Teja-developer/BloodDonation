@@ -12,20 +12,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:orientation="horizontal"
         android:elevation="0dp"
+        android:orientation="horizontal"
         card_view:contentPaddingLeft="8dp"
         card_view:contentPaddingRight="8dp"
         card_view:contentPaddingTop="30dp">
 
-        <ImageView
+        <TextView
             android:id="@+id/photo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
             android:layout_marginTop="8dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/photo" />
+            android:background="@drawable/circle"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="S"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
 
         <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/details"
@@ -35,15 +39,15 @@
             android:paddingBottom="10dp">
 
             <TextView
-                app:layout_constraintTop_toTopOf="parent"
                 android:id="@+id/name_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Catherine"
-                android:layout_marginTop="12dp"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
                 android:id="@+id/linear_layout"
@@ -63,9 +67,9 @@
 
                 <TextView
                     android:id="@+id/place"
-                    android:layout_marginTop="4dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/montserrat"
                     android:text="Singapore" />
             </LinearLayout>
@@ -95,10 +99,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="20dp"
             android:background="@drawable/circle_background"
             android:elevation="6dp"
-            android:layout_marginTop="8dp"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="center"
             android:text="A+"
@@ -112,6 +116,7 @@
         android:id="@+id/last_donated_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/gradient"
         android:elevation="10dp"
         android:fontFamily="@font/montserrat"
@@ -120,7 +125,6 @@
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="12sp"
-        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view1" />
 </android.support.constraint.ConstraintLayout>

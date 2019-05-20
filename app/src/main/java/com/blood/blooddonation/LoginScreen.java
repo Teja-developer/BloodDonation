@@ -107,7 +107,7 @@ public class LoginScreen extends AppCompatActivity {
 
                         String accessToken = loginResult.getAccessToken().getToken();
 
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(intent);
                     }
@@ -173,7 +173,7 @@ public class LoginScreen extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
-            Intent launchActivity = new Intent(getApplicationContext(), HomeActivity.class);
+            Intent launchActivity = new Intent(getApplicationContext(), MainActivity.class);
             launchActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             launchActivity.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(launchActivity);

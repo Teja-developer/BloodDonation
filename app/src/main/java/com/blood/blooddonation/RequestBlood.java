@@ -1,6 +1,16 @@
 package com.blood.blooddonation;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -20,6 +31,8 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.List;
+
 import cz.msebera.android.httpclient.Header;
 
 public class RequestBlood extends AppCompatActivity {
@@ -27,9 +40,16 @@ public class RequestBlood extends AppCompatActivity {
     ImageView aposi, anega, bnega, bposi, oposi, onega, abposi, abnega, male, female;
     int i = 1, j = 1, k = 1, l = 1, m = 1, n = 1, o = 1, p = 1, q = 1;
     Button submit;
+    TextView location;
+    String location_string;
+    String google_map_link;
     String bloodgroup;
-    EditText name, location, hospital, phonenum;
-
+    EditText name, hospital, phonenum;
+    double lat;
+    double lon;
+    Location location2;
+    private LocationManager locationManager;
+    int STORAGE_PERMISSION_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +69,28 @@ public class RequestBlood extends AppCompatActivity {
         location = findViewById(R.id.are);
         hospital = findViewById(R.id.hos);
         phonenum = findViewById(R.id.ph);
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        else{
+            requestPermissions();
+        }
+        location2 = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                get_city();
+                location_string = location.getText().toString();
+            }
+        });
 
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
@@ -191,9 +233,53 @@ public class RequestBlood extends AppCompatActivity {
                 request(spin1.getSelectedItem().toString(), "Hyderabad", bloodgroup, name.getText().toString(), location.getText().toString(), hospital.getText().toString(), phonenum.getText().toString());
             }
         });
+
+
     }
 
-    private void request(String toString, String city, String bloodgroup, String name, String location, String hospital, String phonenum) {
+    private void requestPermissions() {
+
+        if(ActivityCompat.shouldShowRequestPermissionRationale(this,Manifest.permission.ACCESS_COARSE_LOCATION)){
+            new AlertDialog.Builder(this)
+                    .setTitle("Permission Needed")
+                    .setMessage("This permission is needed to fetch your current city")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(RequestBlood.this,new String[] {Manifest.permission.ACCESS_COARSE_LOCATION},STORAGE_PERMISSION_CODE);
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .create().show();
+        }
+        else{
+            ActivityCompat.requestPermissions(this,new String[] {Manifest.permission.ACCESS_COARSE_LOCATION},STORAGE_PERMISSION_CODE);
+        }
+    }
+
+    private void get_city() {
+        lat = location2.getLatitude();
+        lon = location2.getLongitude();
+        try {
+            Log.i("JSON","Lat Lon"+lat+" "+lon);
+            Geocoder geocoder = new Geocoder(this);
+            List<Address> addresses=null;
+            addresses = geocoder.getFromLocation(lat,lon,1);
+            String cit = addresses.get(0).getLocality();
+            location.setText(cit);
+            google_map_link = "https://www.google.com/maps?q=" + lat + "," + lon;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    private void request(String toString, String city, final String bloodgroup, final String name, final String location, final String hospital, final String phonenum) {
 
         final RequestParams params = new RequestParams();
 
@@ -225,6 +311,13 @@ public class RequestBlood extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), FilteredResult.class);
                 intent.putExtra("json", response.toString());
+                intent.putExtra("rname",name);
+                intent.putExtra("blood",fbloodgroup);
+                intent.putExtra("hospital",hospital);
+                intent.putExtra("location",location_string);
+                intent.putExtra("google_loc",google_map_link);
+                intent.putExtra("mobile",phonenum);
+
                 startActivity(intent);
 
             }

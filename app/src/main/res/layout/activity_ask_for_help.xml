@@ -24,7 +24,7 @@
         android:layout_marginStart="66dp"
         android:layout_marginTop="41dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Request for Blood"
+        android:text="Ask For Help"
         android:textColor="#0A0819"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,30 +68,30 @@
                 app:layout_constraintTop_toTopOf="@+id/bloodfor" />
 
             <!--<TextView-->
-                <!--android:id="@+id/citypref"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginStart="32dp"-->
-                <!--android:layout_marginTop="64dp"-->
-                <!--android:fontFamily="@font/montserrat_bold"-->
-                <!--android:text="City Preference"-->
-                <!--android:textColor="#000000"-->
-                <!--android:textSize="14dp"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="@id/spinner1" />-->
+            <!--android:id="@+id/citypref"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="32dp"-->
+            <!--android:layout_marginTop="64dp"-->
+            <!--android:fontFamily="@font/montserrat_bold"-->
+            <!--android:text="City Preference"-->
+            <!--android:textColor="#000000"-->
+            <!--android:textSize="14dp"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@id/spinner1" />-->
 
             <!--<Spinner-->
-                <!--android:id="@+id/spinner2"-->
-                <!--android:layout_width="302dp"-->
-                <!--android:layout_height="45dp"-->
-                <!--android:layout_marginStart="29dp"-->
-                <!--android:layout_marginTop="146dp"-->
-                <!--android:layout_marginEnd="29dp"-->
-                <!--android:paddingStart="10dp"-->
-                <!--android:background="@drawable/greybck"-->
-                <!--app:layout_constraintEnd_toEndOf="parent"-->
-                <!--app:layout_constraintStart_toStartOf="parent"-->
-                <!--app:layout_constraintTop_toTopOf="parent" />-->
+            <!--android:id="@+id/spinner2"-->
+            <!--android:layout_width="302dp"-->
+            <!--android:layout_height="45dp"-->
+            <!--android:layout_marginStart="29dp"-->
+            <!--android:layout_marginTop="146dp"-->
+            <!--android:layout_marginEnd="29dp"-->
+            <!--android:paddingStart="10dp"-->
+            <!--android:background="@drawable/greybck"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
 
             <TextView
                 android:id="@+id/sbg"
@@ -195,7 +195,7 @@
 
 
             <EditText
-                android:id="@+id/nam"
+                android:id="@+id/nam_ask"
                 android:layout_width="302dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="32dp"
@@ -220,7 +220,7 @@
                 android:textColor="#000000"
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/nam" />
+                app:layout_constraintTop_toTopOf="@id/nam_ask" />
 
             <TextView
                 android:id="@+id/are"
@@ -251,7 +251,7 @@
                 app:layout_constraintTop_toTopOf="@id/are" />
 
             <EditText
-                android:id="@+id/hos"
+                android:id="@+id/hos_ask"
                 android:layout_width="302dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="32dp"
@@ -275,10 +275,10 @@
                 android:textColor="#000000"
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/hos" />
+                app:layout_constraintTop_toTopOf="@id/hos_ask" />
 
             <EditText
-                android:id="@+id/ph"
+                android:id="@+id/ph_ask"
                 android:layout_width="302dp"
                 android:layout_height="45dp"
                 android:layout_marginStart="32dp"
@@ -293,11 +293,39 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/phone" />
 
+            <TextView
+                android:id="@+id/reason_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="62dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Reason"
+                android:textColor="#000000"
+                android:textSize="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/ph_ask" />
+
+            <EditText
+                android:id="@+id/rea_ask"
+                android:layout_width="302dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/pinback"
+                android:hint="Reason"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/reason_ask" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
     <Button
-        android:id="@+id/sub"
+        android:id="@+id/sub_ask"
         android:layout_width="342dp"
         android:layout_height="50dp"
         android:layout_marginStart="32dp"

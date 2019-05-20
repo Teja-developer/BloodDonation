@@ -260,7 +260,6 @@ public class HomeActivity extends AppCompatActivity {
                 try {
                     JSONObject obj = (JSONObject) response.get(0);
                     don_count.setText(obj.getString("count(*)"));
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
