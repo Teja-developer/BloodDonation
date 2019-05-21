@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
     CardView cardView;
     private String otp_pin = "";
     ImageView blur;
+    boolean otp_ver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        otp_ver=false;
         phone = findViewById(R.id.phonenm);
         verify = findViewById(R.id.verifysub);
         pinv = findViewById(R.id.pincode);
@@ -63,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
+        phone.requestFocus();
+        ImageButton imageButton = findViewById(R.id.main_back);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"You cannot go back at this stage",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         getotp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
                 sendVerificationCode();
                 cardView.setVisibility(View.VISIBLE);
                 blur.setVisibility(View.VISIBLE);
+                getotp.requestFocus();
+                phone.clearFocus();
+                getotp.setCursorVisible(true);
                 getotp.setVisibility(View.GONE);
             }
         });
@@ -95,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void resendVerificationCode(String number) {
         RequestParams params = new RequestParams();
-        params.put("mobile_number", number);
+        params.put("mobile", number);
 
         Log.i("JSON", "no:" + number);
         String otp_url = "https://bloodtransfer.herokuapp.com/index.php/Oauth/resend";
@@ -144,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
         String number = phone.getText().toString();
 
         RequestParams params = new RequestParams();
-        params.put("mobile_number", number);
+        params.put("mobile", number);
 
         Log.i("JSON", "no:" + number);
         // Oauth/sendsms/(message)/(phno)/
@@ -177,4 +191,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    @Override
+    public void onBackPressed() {
+        Toast.makeText(getApplicationContext(),"You cant go back at this stage",Toast.LENGTH_SHORT).show();
+    }
 }

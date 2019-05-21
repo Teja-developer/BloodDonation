@@ -10,4 +10,6 @@
     <string name="client_id"> 657983068376-1u09hn0bl44h1qqsqjqidt41m8qv1ei2.apps.googleusercontent.com </string>
     <string name="client_secret"> VgkArDnG990ldJWosqLAxWVk </string>
     <string name="web_client">657983068376-1u09hn0bl44h1qqsqjqidt41m8qv1ei2.apps.googleusercontent.com</string>
+    <string name="url_shortener">AIzaSyC1u7yPHGjEvVUPFpCo6P_aBOrBNDlJKIk</string>
+    <string name="one_signal_id">29af64e8-cd6e-4dc4-bf17-6b99b7a87210</string>
 </resources>

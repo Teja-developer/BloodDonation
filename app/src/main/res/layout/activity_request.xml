@@ -33,15 +33,15 @@
                     android:src="@drawable/arrow"
                     app:layout_constraintStart_toStartOf="parent" />
 
-                <ImageButton
-                    android:id="@+id/filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="18dp"
-                    android:background="#FF215D"
-                    android:foregroundGravity="right"
-                    android:src="@drawable/filter"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                <!--<ImageButton-->
+                    <!--android:id="@+id/filter"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginEnd="18dp"-->
+                    <!--android:background="#FF215D"-->
+                    <!--android:foregroundGravity="right"-->
+                    <!--android:src="@drawable/filter"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent" />-->
             </android.support.constraint.ConstraintLayout>
         </android.support.v7.widget.Toolbar>
 
@@ -65,8 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-
-                android:text="120966"
+                android:text="0"
                 android:textColor="@color/white"
                 android:textSize="22sp"
                 android:textStyle="bold" />

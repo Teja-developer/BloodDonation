@@ -68,32 +68,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/city"
-        android:text="City"
+    <!--<TextView-->
+        <!--android:id="@+id/city"-->
+        <!--android:text="Click here for city"-->
+        <!--android:layout_width="342dp"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:background="@drawable/greybck"-->
+        <!--android:gravity="center"-->
+        <!--android:fontFamily="@font/montserrat_bold"-->
+        <!--android:textSize="16dp"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/phonenumber" />-->
+
+    <com.seatgeek.placesautocomplete.PlacesAutocompleteTextView
+        android:id="@+id/places_autocomplete"
         android:layout_width="342dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/greybck"
-        android:gravity="center"
-        android:fontFamily="@font/montserrat_bold"
-        android:textSize="16dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginTop="18dp"
+        android:hint="Enter your address"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:paddingStart="20dp"
+        android:background="@drawable/pinback"
         app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/montserrat"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phonenumber" />
+        app:layout_constraintTop_toBottomOf="@id/phonenumber"
+        app:pacv_googleMapsApiKey="AIzaSyC1u7yPHGjEvVUPFpCo6P_aBOrBNDlJKIk"/>
 
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="263dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Gender"
         android:textColor="#0A0819"
         android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/places_autocomplete" />
 
     <ImageView
         android:id="@+id/imageView"

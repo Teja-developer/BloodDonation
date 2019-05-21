@@ -38,7 +38,8 @@ import cz.msebera.android.httpclient.Header;
 public class RequestBlood extends AppCompatActivity {
 
     ImageView aposi, anega, bnega, bposi, oposi, onega, abposi, abnega, male, female;
-    int i = 1, j = 1, k = 1, l = 1, m = 1, n = 1, o = 1, p = 1, q = 1;
+    int i = 1, j = 1;
+    boolean sel = false;
     Button submit;
     TextView location;
     String location_string;
@@ -110,11 +111,23 @@ public class RequestBlood extends AppCompatActivity {
         aposi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (j == 1) {
+                if (j == 1 || sel) {
                     aposi.setImageResource(R.drawable.cgroup310);
                     j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    anega.setImageResource(R.drawable.group311);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
+
                     bloodgroup = "A+";
                 } else {
+                    sel = false;
                     aposi.setImageResource(R.drawable.group310);
                     j = 1;
                 }
@@ -125,13 +138,26 @@ public class RequestBlood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 anega.setImageResource(R.drawable.cgroup311);
-                if (k == 1) {
+                if (j == 1 || sel) {
                     anega.setImageResource(R.drawable.cgroup311);
-                    k = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
+
+                    j = 0;
                     bloodgroup = "A-";
                 } else {
+
+                    sel = false;
                     anega.setImageResource(R.drawable.group311);
-                    k = 1;
+                    j = 1;
                 }
             }
         });
@@ -140,13 +166,26 @@ public class RequestBlood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 bnega.setImageResource(R.drawable.cgroup312);
-                if (l == 1) {
+                if (j == 1 || sel) {
                     bnega.setImageResource(R.drawable.cgroup312);
-                    l = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    anega.setImageResource(R.drawable.group311);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
+
                     bloodgroup = "B-";
                 } else {
+                    sel = false;
                     bnega.setImageResource(R.drawable.group312);
-                    l = 1;
+                    j = 1;
+                    bloodgroup = null;
                 }
             }
         });
@@ -155,13 +194,25 @@ public class RequestBlood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 bposi.setImageResource(R.drawable.cgroup319);
-                if (m == 1) {
+                if (j == 1 || sel) {
                     bposi.setImageResource(R.drawable.cgroup319);
-                    m = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    anega.setImageResource(R.drawable.group311);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
                     bloodgroup = "B+";
                 } else {
+                    sel = false;
                     bposi.setImageResource(R.drawable.group319);
-                    m = 1;
+                    j = 1;
+                    bloodgroup = null;
                 }
             }
         });
@@ -170,13 +221,27 @@ public class RequestBlood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 oposi.setImageResource(R.drawable.cgroup313);
-                if (n == 1) {
+                if (j == 1 || sel) {
                     oposi.setImageResource(R.drawable.cgroup313);
-                    n = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    anega.setImageResource(R.drawable.group311);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
+
                     bloodgroup = "O+";
                 } else {
+
+                    sel = false;
                     oposi.setImageResource(R.drawable.group313);
-                    n = 1;
+                    j = 1;
+                    bloodgroup = null;
                 }
             }
         });
@@ -185,13 +250,27 @@ public class RequestBlood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onega.setImageResource(R.drawable.cgroup318);
-                if (o == 1) {
+                if (j == 1 || sel) {
                     onega.setImageResource(R.drawable.cgroup318);
-                    o = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    anega.setImageResource(R.drawable.group311);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
+
                     bloodgroup = "O-";
                 } else {
+
+                    sel = false;
                     onega.setImageResource(R.drawable.group318);
-                    o = 1;
+                    j = 1;
+                    bloodgroup = null;
                 }
             }
         });
@@ -200,13 +279,27 @@ public class RequestBlood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 abposi.setImageResource(R.drawable.cgroup317);
-                if (p == 1) {
+                if (j == 1 || sel) {
                     abposi.setImageResource(R.drawable.cgroup317);
-                    p = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    anega.setImageResource(R.drawable.group311);
+                    abnega.setImageResource(R.drawable.group316);
+
                     bloodgroup = "AB+";
                 } else {
+
+                    sel = false;
                     abposi.setImageResource(R.drawable.group317);
-                    p = 1;
+                    j = 1;
+                    bloodgroup = null;
                 }
             }
         });
@@ -215,17 +308,28 @@ public class RequestBlood extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 abnega.setImageResource(R.drawable.cgroup316);
-                if (q == 1) {
+                if (j == 1 || sel) {
                     abnega.setImageResource(R.drawable.cgroup316);
-                    q = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    anega.setImageResource(R.drawable.group311);
+
                     bloodgroup = "AB-";
                 } else {
+                    sel = false;
                     abnega.setImageResource(R.drawable.group316);
-                    q = 1;
+                    j = 1;
                 }
             }
         });
-
         submit = findViewById(R.id.sub);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override

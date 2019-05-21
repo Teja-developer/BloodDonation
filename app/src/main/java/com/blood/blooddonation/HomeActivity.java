@@ -32,20 +32,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
-
 public class HomeActivity extends AppCompatActivity {
 
     private ActionBarDrawerToggle t;
     private NavigationView nv;
     private TextView usrnm;
-    private Button propic;
+    private TextView propic;
     boolean doubleBackToExitPressedOnce = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
 
         //Toolbar ..
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -69,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
         alldonors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Donors.class);
+                Intent intent = new Intent(getApplicationContext(), BecomeDonor.class);
                 startActivity(intent);
             }
         });
@@ -78,7 +76,7 @@ public class HomeActivity extends AppCompatActivity {
         request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), RequestActivity.class);
+                Intent intent = new Intent(getApplicationContext(), RequestBlood.class);
                 startActivity(intent);
             }
         });
@@ -98,13 +96,13 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(see_request);
                         break;
                     case R.id.Make_Requests:
-                        Intent req_blood = new Intent(getApplicationContext(), RequestBlood.class);
-                        startActivity(req_blood);
+                        Intent don = new Intent(getApplicationContext(), Donors.class);
+                        startActivity(don);
                         break;
 
                     case R.id.Become_donor:
-                        Intent bec_don = new Intent(getApplicationContext(), BecomeDonor.class);
-                        startActivity(bec_don);
+                        Intent intent = new Intent(getApplicationContext(), RequestActivity.class);
+                        startActivity(intent);
                         break;
                     default:
                         return true;

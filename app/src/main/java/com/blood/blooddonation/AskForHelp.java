@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -30,6 +31,7 @@ import org.json.JSONObject;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
+
 
 public class AskForHelp extends AppCompatActivity {
 
@@ -42,7 +44,7 @@ public class AskForHelp extends AppCompatActivity {
     int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     TextView loc;
     Button sub;
-    ImageView aposi, anega, bnega, bposi, oposi, onega, abposi, abnega;
+//    ImageView aposi, anega, bnega, bposi, oposi, onega, abposi, abnega;
     int i = 1, j = 1, k = 1, l = 1, m = 1, n = 1, o = 1, p = 1, q = 1;
 
     @Override
@@ -50,133 +52,133 @@ public class AskForHelp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ask_for_help);
 
-        aposi = findViewById(R.id.apos);
-        anega = findViewById(R.id.aneg);
-        bnega = findViewById(R.id.bneg);
-        bposi = findViewById(R.id.bpos);
-        oposi = findViewById(R.id.opos);
-        onega = findViewById(R.id.oneg);
-        abposi = findViewById(R.id.abpos);
-        abnega = findViewById(R.id.abneg);
-
-        aposi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (j == 1) {
-                    aposi.setImageResource(R.drawable.cgroup310);
-                    j = 0;
-                    bloodgroup = "A+";
-                } else {
-                    aposi.setImageResource(R.drawable.group310);
-                    j = 1;
-                }
-            }
-        });
-
-        anega.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                anega.setImageResource(R.drawable.cgroup311);
-                if (k == 1) {
-                    anega.setImageResource(R.drawable.cgroup311);
-                    k = 0;
-                    bloodgroup = "A-";
-                } else {
-                    anega.setImageResource(R.drawable.group311);
-                    k = 1;
-                }
-            }
-        });
-
-        bnega.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bnega.setImageResource(R.drawable.cgroup312);
-                if (l == 1) {
-                    bnega.setImageResource(R.drawable.cgroup312);
-                    l = 0;
-                    bloodgroup = "B-";
-                } else {
-                    bnega.setImageResource(R.drawable.group312);
-                    l = 1;
-                }
-            }
-        });
-
-        bposi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bposi.setImageResource(R.drawable.cgroup319);
-                if (m == 1) {
-                    bposi.setImageResource(R.drawable.cgroup319);
-                    m = 0;
-                    bloodgroup = "B+";
-                } else {
-                    bposi.setImageResource(R.drawable.group319);
-                    m = 1;
-                }
-            }
-        });
-
-        oposi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oposi.setImageResource(R.drawable.cgroup313);
-                if (n == 1) {
-                    oposi.setImageResource(R.drawable.cgroup313);
-                    n = 0;
-                    bloodgroup = "O+";
-                } else {
-                    oposi.setImageResource(R.drawable.group313);
-                    n = 1;
-                }
-            }
-        });
-
-        onega.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onega.setImageResource(R.drawable.cgroup318);
-                if (o == 1) {
-                    onega.setImageResource(R.drawable.cgroup318);
-                    o = 0;
-                    bloodgroup = "O-";
-                } else {
-                    onega.setImageResource(R.drawable.group318);
-                    o = 1;
-                }
-            }
-        });
-
-        abposi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                abposi.setImageResource(R.drawable.cgroup317);
-                if (p == 1) {
-                    abposi.setImageResource(R.drawable.cgroup317);
-                    p = 0;
-                    bloodgroup = "AB+";
-                } else {
-                    abposi.setImageResource(R.drawable.group317);
-                    p = 1;
-                }
-            }
-        });
-
-        abnega.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                abnega.setImageResource(R.drawable.cgroup316);
-                if (q == 1) {
-                    abnega.setImageResource(R.drawable.cgroup316);
-                    q = 0;
-                    bloodgroup = "AB-";
-                } else {
-                    abnega.setImageResource(R.drawable.group316);
-                    q = 1;
-                }
-            }
-        });
+//        aposi = findViewById(R.id.apos);
+//        anega = findViewById(R.id.aneg);
+//        bnega = findViewById(R.id.bneg);
+//        bposi = findViewById(R.id.bpos);
+//        oposi = findViewById(R.id.opos);
+//        onega = findViewById(R.id.oneg);
+//        abposi = findViewById(R.id.abpos);
+//        abnega = findViewById(R.id.abneg);
+//
+//        aposi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (j == 1) {
+//                    aposi.setImageResource(R.drawable.cgroup310);
+//                    j = 0;
+//                    bloodgroup = "A+";
+//                } else {
+//                    aposi.setImageResource(R.drawable.group310);
+//                    j = 1;
+//                }
+//            }
+//        });
+//
+//        anega.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                anega.setImageResource(R.drawable.cgroup311);
+//                if (k == 1) {
+//                    anega.setImageResource(R.drawable.cgroup311);
+//                    k = 0;
+//                    bloodgroup = "A-";
+//                } else {
+//                    anega.setImageResource(R.drawable.group311);
+//                    k = 1;
+//                }
+//            }
+//        });
+//
+//        bnega.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                bnega.setImageResource(R.drawable.cgroup312);
+//                if (l == 1) {
+//                    bnega.setImageResource(R.drawable.cgroup312);
+//                    l = 0;
+//                    bloodgroup = "B-";
+//                } else {
+//                    bnega.setImageResource(R.drawable.group312);
+//                    l = 1;
+//                }
+//            }
+//        });
+//
+//        bposi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                bposi.setImageResource(R.drawable.cgroup319);
+//                if (m == 1) {
+//                    bposi.setImageResource(R.drawable.cgroup319);
+//                    m = 0;
+//                    bloodgroup = "B+";
+//                } else {
+//                    bposi.setImageResource(R.drawable.group319);
+//                    m = 1;
+//                }
+//            }
+//        });
+//
+//        oposi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                oposi.setImageResource(R.drawable.cgroup313);
+//                if (n == 1) {
+//                    oposi.setImageResource(R.drawable.cgroup313);
+//                    n = 0;
+//                    bloodgroup = "O+";
+//                } else {
+//                    oposi.setImageResource(R.drawable.group313);
+//                    n = 1;
+//                }
+//            }
+//        });
+//
+//        onega.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onega.setImageResource(R.drawable.cgroup318);
+//                if (o == 1) {
+//                    onega.setImageResource(R.drawable.cgroup318);
+//                    o = 0;
+//                    bloodgroup = "O-";
+//                } else {
+//                    onega.setImageResource(R.drawable.group318);
+//                    o = 1;
+//                }
+//            }
+//        });
+//
+//        abposi.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                abposi.setImageResource(R.drawable.cgroup317);
+//                if (p == 1) {
+//                    abposi.setImageResource(R.drawable.cgroup317);
+//                    p = 0;
+//                    bloodgroup = "AB+";
+//                } else {
+//                    abposi.setImageResource(R.drawable.group317);
+//                    p = 1;
+//                }
+//            }
+//        });
+//
+//        abnega.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                abnega.setImageResource(R.drawable.cgroup316);
+//                if (q == 1) {
+//                    abnega.setImageResource(R.drawable.cgroup316);
+//                    q = 0;
+//                    bloodgroup = "AB-";
+//                } else {
+//                    abnega.setImageResource(R.drawable.group316);
+//                    q = 1;
+//                }
+//            }
+//        });
 
         final EditText editText = findViewById(R.id.rea_ask);
 
@@ -210,7 +212,7 @@ public class AskForHelp extends AppCompatActivity {
                 get_city();
             }
         });
-        final String link1 = "blood.donate/accept/123", link2 = "blood.donate/reject/123";
+        // name/phno.
 
         String[] bloodfor = {"Friend", "Father", "Mother", "Relative", "Others"};
         final Spinner spin1 = (Spinner) findViewById(R.id.spinner1);
@@ -221,6 +223,11 @@ public class AskForHelp extends AppCompatActivity {
         final String name = getIntent().getStringExtra("don_name");
         final String number = getIntent().getStringExtra("number");
 
+        //Initialization of name,location,contact no from other activities
+        r_name.setText(getIntent().getStringExtra("rec_name"));
+        mobil_r.setText(getIntent().getStringExtra("number"));
+        loc.setText("Click to get location");
+        bloodgroup = getIntent().getStringExtra("blood_group");
 
         sub = findViewById(R.id.sub_ask);
         sub.setOnClickListener(new View.OnClickListener() {
@@ -231,9 +238,12 @@ public class AskForHelp extends AppCompatActivity {
                 final String r_name_str = r_name.getText().toString();
                 final String mobile = mobil_r.getText().toString();
                 final String hospital_str = hospital.getText().toString();
+                final String[] link1 = {"https://bloodtransfer.herokuapp.com/index.php/log/" + r_name_str + "true/" + mobile};
+                final String[] link2 = {"https://bloodtransfer.herokuapp.com/index.php/log/"+r_name_str +"cancel/"+ mobile};
 
+                Log.i("JSON", link1[0]);
                 message = "Hello " + name + ",\n\n Will you be able to donate blood for a patient who is suffering with " + reason + ".\nHere are the details:-\n\n Name: " + r_name_str + "\n Mobile number: " + mobile +
-                        "\n Reason: " + reason + "\n Hospital place: " + hospital_str + "\n Blood group needed: "+bloodgroup+"\n\n Location link: " + loc_link + "\n\nClick on this link to accept this request\n" + link1 + "\n\n Click here to reject\n" + link2;
+                        "\n Reason: " + reason + "\n Hospital place: " + hospital_str + "\n Blood group needed: " + bloodgroup + "\n\n Location link: " + loc_link + "\n\nClick on this link to accept this request\n" + link1[0] + "\n\n Click here to reject\n" + link2[0];
 
 //                Log.i("JSON",message);
 
@@ -242,7 +252,9 @@ public class AskForHelp extends AppCompatActivity {
         });
 
     }
-//https://bloodtransfer.herokuapp.com/index.php/Oauth/send_sms/msg/mobno
+
+
+    //https://bloodtransfer.herokuapp.com/index.php/Oauth/send_sms/msg/mobno
     private void sendsms(String message, String number) {
 
 
@@ -250,18 +262,19 @@ public class AskForHelp extends AppCompatActivity {
         Log.i("JSON", otp_url);
 
         RequestParams params = new RequestParams();
-        params.put("mobile",number);
-        params.put("msg",message);
+        params.put("mobile", number);
+        params.put("msg", message);
 
+        Log.i("JSON", message);
         AsyncHttpClient client = new AsyncHttpClient();
         client.post(otp_url, params, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 Log.i("JSON", "JSON is " + response.toString());
                 Log.i("JSON", "Status  code" + statusCode);
-                Log.i("JSON", "Response is "+response.toString());
-                Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                Log.i("JSON", "Response is " + response.toString());
+                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
 
@@ -275,9 +288,9 @@ public class AskForHelp extends AppCompatActivity {
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Toast.makeText(getApplicationContext(), "Request Success :)", Toast.LENGTH_SHORT).show();
                 Log.i("JSON", "Status  code" + statusCode);
-                Log.i("JSON", "Response is "+responseString);
-                Toast.makeText(getApplicationContext(),"Success",Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
+                Log.i("JSON", "Response is " + responseString);
+                Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -302,3 +315,4 @@ public class AskForHelp extends AppCompatActivity {
 
     }
 }
+

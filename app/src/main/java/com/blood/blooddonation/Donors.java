@@ -2,37 +2,21 @@ package com.blood.blooddonation;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.support.annotation.NonNull;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -50,11 +34,6 @@ public class Donors extends AppCompatActivity {
 
     private ListView listview;
     private List<Attributes> AttributesList;
-    FirebaseFirestore db;
-    FirebaseAuth mAuth;
-    StorageReference reference;
-    private CollectionReference collectionReference;
-    TextView ph;
     JSONArray result;
 
     @Override
@@ -84,49 +63,39 @@ public class Donors extends AppCompatActivity {
             }
         });
 
-        mAuth = FirebaseAuth.getInstance();
-
-        db = FirebaseFirestore.getInstance();
-
-        collectionReference = db.collection("Donors");
-
-        reference = FirebaseStorage.getInstance().getReference();
-
         AttributesList = new ArrayList<>();
-
 
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mLayoutManager.setReverseLayout(true);
         mLayoutManager.setStackFromEnd(true);
 
-
         displayAllPosts();
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.alldonors, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_filter) {
-            Toast.makeText(getApplicationContext(), "Action clicked", Toast.LENGTH_LONG).show();
-            return true;
-        }
-
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.alldonors, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_filter) {
+//            Toast.makeText(getApplicationContext(), "Action clicked", Toast.LENGTH_LONG).show();
+//            return true;
+//        }
+//
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     private void displayAllPosts() {
         String displayurl = "https://bloodtransfer.herokuapp.com/index.php/data/searchall";
@@ -205,12 +174,14 @@ public class Donors extends AppCompatActivity {
                 contact.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        Intent intent = new Intent(getApplicationContext(), AskForHelp.class);
+                        Intent intent = new Intent(getApplicationContext(), RequestActivity.class);
                         try {
                             intent.putExtra("don_name", object.getString("name"));
                             intent.putExtra("number", object.getString("mobile"));
                             //intent.putExtra("id",object.getString("id"));
+                            intent.putExtra("bloodgroup",object.getString("bloodgroup"));
+                            intent.putExtra("city",object.getString("city"));
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

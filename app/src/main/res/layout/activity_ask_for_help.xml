@@ -93,91 +93,91 @@
             <!--app:layout_constraintStart_toStartOf="parent"-->
             <!--app:layout_constraintTop_toTopOf="parent" />-->
 
-            <TextView
-                android:id="@+id/sbg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="70dp"
-                android:fontFamily="@font/montserrat_bold"
-                android:text="Select Blood Group"
-                android:textColor="#000000"
-                android:textSize="14dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/spinner1" />
+            <!--<TextView-->
+                <!--android:id="@+id/sbg"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginStart="32dp"-->
+                <!--android:layout_marginTop="70dp"-->
+                <!--android:fontFamily="@font/montserrat_bold"-->
+                <!--android:text="Select Blood Group"-->
+                <!--android:textColor="#000000"-->
+                <!--android:textSize="14dp"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@id/spinner1" />-->
 
-            <ImageView
-                android:id="@+id/apos"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="44dp"
-                android:src="@drawable/group310"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/sbg" />
-            <ImageView
-                android:id="@+id/aneg"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="84dp"
-                android:layout_marginTop="44dp"
-                android:src="@drawable/group311"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/sbg" />
-            <ImageView
-                android:id="@+id/bneg"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="136dp"
-                android:layout_marginTop="44dp"
-                android:src="@drawable/group312"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/sbg" />
-            <ImageView
-                android:id="@+id/bpos"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="188dp"
-                android:layout_marginTop="44dp"
-                android:src="@drawable/group319"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/sbg" />
-            <ImageView
-                android:id="@+id/opos"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="240dp"
-                android:layout_marginTop="44dp"
-                android:src="@drawable/group313"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/sbg" />
-            <ImageView
-                android:id="@+id/oneg"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="292dp"
-                android:layout_marginTop="44dp"
-                android:src="@drawable/group318"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/sbg" />
-            <ImageView
-                android:id="@+id/abneg"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="54dp"
-                android:src="@drawable/group316"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/oneg" />
-            <ImageView
-                android:id="@+id/abpos"
-                android:layout_width="41dp"
-                android:layout_height="41dp"
-                android:layout_marginStart="84dp"
-                android:layout_marginTop="54dp"
-                android:src="@drawable/group317"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/oneg" />
+            <!--<ImageView-->
+                <!--android:id="@+id/apos"-->
+                <!--android:layout_width="41dp"-->
+                <!--android:layout_height="41dp"-->
+                <!--android:layout_marginStart="32dp"-->
+                <!--android:layout_marginTop="44dp"-->
+                <!--android:src="@drawable/group310"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@id/sbg" />-->
+            <!--<ImageView-->
+                <!--android:id="@+id/aneg"-->
+                <!--android:layout_width="41dp"-->
+                <!--android:layout_height="41dp"-->
+                <!--android:layout_marginStart="84dp"-->
+                <!--android:layout_marginTop="44dp"-->
+                <!--android:src="@drawable/group311"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@id/sbg" />-->
+            <!--<ImageView-->
+                <!--android:id="@+id/bneg"-->
+                <!--android:layout_width="41dp"-->
+                <!--android:layout_height="41dp"-->
+                <!--android:layout_marginStart="136dp"-->
+                <!--android:layout_marginTop="44dp"-->
+                <!--android:src="@drawable/group312"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@id/sbg" />-->
+            <!--<ImageView-->
+                <!--android:id="@+id/bpos"-->
+                <!--android:layout_width="41dp"-->
+                <!--android:layout_height="41dp"-->
+                <!--android:layout_marginStart="188dp"-->
+                <!--android:layout_marginTop="44dp"-->
+                <!--android:src="@drawable/group319"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@id/sbg" />-->
+            <!--<ImageView-->
+                <!--android:id="@+id/opos"-->
+                <!--android:layout_width="41dp"-->
+                <!--android:layout_height="41dp"-->
+                <!--android:layout_marginStart="240dp"-->
+                <!--android:layout_marginTop="44dp"-->
+                <!--android:src="@drawable/group313"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@id/sbg" />-->
+            <!--<ImageView-->
+                <!--android:id="@+id/oneg"-->
+                <!--android:layout_width="41dp"-->
+                <!--android:layout_height="41dp"-->
+                <!--android:layout_marginStart="292dp"-->
+                <!--android:layout_marginTop="44dp"-->
+                <!--android:src="@drawable/group318"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@id/sbg" />-->
+            <!--<ImageView-->
+                <!--android:id="@+id/abneg"-->
+                <!--android:layout_width="41dp"-->
+                <!--android:layout_height="41dp"-->
+                <!--android:layout_marginStart="32dp"-->
+                <!--android:layout_marginTop="54dp"-->
+                <!--android:src="@drawable/group316"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@id/oneg" />-->
+            <!--<ImageView-->
+                <!--android:id="@+id/abpos"-->
+                <!--android:layout_width="41dp"-->
+                <!--android:layout_height="41dp"-->
+                <!--android:layout_marginStart="84dp"-->
+                <!--android:layout_marginTop="54dp"-->
+                <!--android:src="@drawable/group317"-->
+                <!--app:layout_constraintStart_toStartOf="parent"-->
+                <!--app:layout_constraintTop_toTopOf="@id/oneg" />-->
 
 
             <TextView
@@ -191,7 +191,7 @@
                 android:textColor="#000000"
                 android:textSize="14dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/abpos" />
+                app:layout_constraintTop_toTopOf="@id/spinner1" />
 
 
             <EditText

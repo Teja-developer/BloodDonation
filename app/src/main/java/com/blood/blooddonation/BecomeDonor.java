@@ -4,7 +4,6 @@ package com.blood.blooddonation;
 import android.Manifest;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,18 +12,16 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.format.DateFormat;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,13 +34,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
+import com.seatgeek.placesautocomplete.OnPlaceSelectedListener;
+import com.seatgeek.placesautocomplete.PlacesAutocompleteTextView;
+import com.seatgeek.placesautocomplete.model.Place;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -51,8 +49,8 @@ import cz.msebera.android.httpclient.Header;
 public class BecomeDonor extends AppCompatActivity {
 
     ImageView aposi, anega, bnega, bposi, oposi, onega, abposi, abnega, male, female;
-    int i = 1, j = 1, k = 1, l = 1, m = 1, n = 1, o = 1, p = 1, q = 1;
-    boolean ma = false, fe = false;
+    int i = 1, j = 1;
+    boolean ma = false, fe = false, sel = false;
     EditText name, age, phone;
     TextView city;
     String gender, bloodgroup, visibility_str;
@@ -63,7 +61,8 @@ public class BecomeDonor extends AppCompatActivity {
     double lon;
     Location location;
     private LocationManager locationManager;
-    int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION=1;
+    int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +70,19 @@ public class BecomeDonor extends AppCompatActivity {
 
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 
+
         setContentView(R.layout.activity_become_donor);
+
+        PlacesAutocompleteTextView placesAutocompleteTextView;
+
+        placesAutocompleteTextView = findViewById(R.id.places_autocomplete);
+        placesAutocompleteTextView.setOnPlaceSelectedListener(new OnPlaceSelectedListener() {
+            @Override
+            public void onPlaceSelected(@NonNull Place place) {
+                String pla = place.description;
+                Log.i("JSON", pla);
+            }
+        });
         aposi = findViewById(R.id.apos);
         anega = findViewById(R.id.aneg);
         bnega = findViewById(R.id.bneg);
@@ -82,7 +93,7 @@ public class BecomeDonor extends AppCompatActivity {
         abnega = findViewById(R.id.abneg);
         male = findViewById(R.id.imageView);
         female = findViewById(R.id.imageView2);
-        city = findViewById(R.id.city);
+        // city = findViewById(R.id.city);
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -98,19 +109,27 @@ public class BecomeDonor extends AppCompatActivity {
             return;
         }
 
-        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-        city.setOnClickListener(new View.OnClickListener() {
+        ImageButton imageButton = findViewById(R.id.back_donor);
+        imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("JSON","REached");
-                    get_city();
+                finish();
             }
         });
 
+        location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+//        city.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.i("JSON","REached");
+//                    get_city();
+//            }
+//        });
+
         //Edittext definition
         name = findViewById(R.id.editText);
-        city = findViewById(R.id.city);
+        //city = findViewById(R.id.city);
         age = findViewById(R.id.age_donor);
         phone = findViewById(R.id.phonenumber);
 
@@ -180,11 +199,23 @@ public class BecomeDonor extends AppCompatActivity {
         aposi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (j == 1) {
+                if (j == 1 || sel) {
                     aposi.setImageResource(R.drawable.cgroup310);
                     j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    anega.setImageResource(R.drawable.group311);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
+
                     bloodgroup = "A+";
                 } else {
+                    sel = false;
                     aposi.setImageResource(R.drawable.group310);
                     j = 1;
                 }
@@ -195,13 +226,26 @@ public class BecomeDonor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 anega.setImageResource(R.drawable.cgroup311);
-                if (k == 1) {
+                if (j == 1 || sel) {
                     anega.setImageResource(R.drawable.cgroup311);
-                    k = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
+
+                    j = 0;
                     bloodgroup = "A-";
                 } else {
+
+                    sel = false;
                     anega.setImageResource(R.drawable.group311);
-                    k = 1;
+                    j = 1;
                 }
             }
         });
@@ -210,13 +254,26 @@ public class BecomeDonor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 bnega.setImageResource(R.drawable.cgroup312);
-                if (l == 1) {
+                if (j == 1 || sel) {
                     bnega.setImageResource(R.drawable.cgroup312);
-                    l = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    anega.setImageResource(R.drawable.group311);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
+
                     bloodgroup = "B-";
                 } else {
+                    sel = false;
                     bnega.setImageResource(R.drawable.group312);
-                    l = 1;
+                    j = 1;
+                    bloodgroup = null;
                 }
             }
         });
@@ -225,13 +282,25 @@ public class BecomeDonor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 bposi.setImageResource(R.drawable.cgroup319);
-                if (m == 1) {
+                if (j == 1 || sel) {
                     bposi.setImageResource(R.drawable.cgroup319);
-                    m = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    anega.setImageResource(R.drawable.group311);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
                     bloodgroup = "B+";
                 } else {
+                    sel = false;
                     bposi.setImageResource(R.drawable.group319);
-                    m = 1;
+                    j = 1;
+                    bloodgroup = null;
                 }
             }
         });
@@ -240,13 +309,27 @@ public class BecomeDonor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 oposi.setImageResource(R.drawable.cgroup313);
-                if (n == 1) {
+                if (j == 1 || sel) {
                     oposi.setImageResource(R.drawable.cgroup313);
-                    n = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    anega.setImageResource(R.drawable.group311);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
+
                     bloodgroup = "O+";
                 } else {
+
+                    sel = false;
                     oposi.setImageResource(R.drawable.group313);
-                    n = 1;
+                    j = 1;
+                    bloodgroup = null;
                 }
             }
         });
@@ -255,13 +338,27 @@ public class BecomeDonor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onega.setImageResource(R.drawable.cgroup318);
-                if (o == 1) {
+                if (j == 1 || sel) {
                     onega.setImageResource(R.drawable.cgroup318);
-                    o = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    anega.setImageResource(R.drawable.group311);
+                    abposi.setImageResource(R.drawable.group317);
+                    abnega.setImageResource(R.drawable.group316);
+
                     bloodgroup = "O-";
                 } else {
+
+                    sel = false;
                     onega.setImageResource(R.drawable.group318);
-                    o = 1;
+                    j = 1;
+                    bloodgroup = null;
                 }
             }
         });
@@ -270,13 +367,27 @@ public class BecomeDonor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 abposi.setImageResource(R.drawable.cgroup317);
-                if (p == 1) {
+                if (j == 1 || sel) {
                     abposi.setImageResource(R.drawable.cgroup317);
-                    p = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    anega.setImageResource(R.drawable.group311);
+                    abnega.setImageResource(R.drawable.group316);
+
                     bloodgroup = "AB+";
                 } else {
+
+                    sel = false;
                     abposi.setImageResource(R.drawable.group317);
-                    p = 1;
+                    j = 1;
+                    bloodgroup = null;
                 }
             }
         });
@@ -285,16 +396,29 @@ public class BecomeDonor extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 abnega.setImageResource(R.drawable.cgroup316);
-                if (q == 1) {
+                if (j == 1 || sel) {
                     abnega.setImageResource(R.drawable.cgroup316);
-                    q = 0;
+                    j = 0;
+
+                    sel = true;
+                    //Set all other to blank
+                    aposi.setImageResource(R.drawable.group310);
+                    bnega.setImageResource(R.drawable.group312);
+                    bposi.setImageResource(R.drawable.group319);
+                    oposi.setImageResource(R.drawable.group313);
+                    onega.setImageResource(R.drawable.group318);
+                    abposi.setImageResource(R.drawable.group317);
+                    anega.setImageResource(R.drawable.group311);
+
                     bloodgroup = "AB-";
                 } else {
+                    sel = false;
                     abnega.setImageResource(R.drawable.group316);
-                    q = 1;
+                    j = 1;
                 }
             }
         });
+
 
         Button sub_button = findViewById(R.id.button);
         sub_button.setOnClickListener(new View.OnClickListener() {
@@ -310,7 +434,7 @@ public class BecomeDonor extends AppCompatActivity {
         });
     }
 
-    public void back(View view){
+    public void back(View view) {
         finish();
     }
 
@@ -340,17 +464,17 @@ public class BecomeDonor extends AppCompatActivity {
 //    }
 
     private void get_city() {
-       lat = location.getLatitude();
-       lon = location.getLongitude();
-       try {
-           Geocoder geocoder = new Geocoder(this);
-           List<Address> addresses=null;
-           addresses = geocoder.getFromLocation(lat,lon,1);
-           String cit = addresses.get(0).getLocality();
-           city.setText(cit);
-       }catch (Exception e){
-           e.printStackTrace();
-       }
+        lat = location.getLatitude();
+        lon = location.getLongitude();
+        try {
+            Geocoder geocoder = new Geocoder(this);
+            List<Address> addresses = null;
+            addresses = geocoder.getFromLocation(lat, lon, 1);
+            String cit = addresses.get(0).getLocality();
+            city.setText(cit);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -465,7 +589,6 @@ public class BecomeDonor extends AppCompatActivity {
             request.executeAsync();
         }
         Log.i("JSON", "reached addPost method");
-
 
 
     }

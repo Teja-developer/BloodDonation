@@ -123,13 +123,13 @@ public class FilteredResult extends AppCompatActivity {
 
         private void sendsms(String message, String number) {
 
-            String urlEncoded = message.replaceAll(" ", "%20");
-            urlEncoded = urlEncoded.replaceAll(",", "%2C");
-            urlEncoded = urlEncoded.replaceAll(".", "%2E");
-            urlEncoded = urlEncoded.replaceAll("-", "%2D");
-            urlEncoded = urlEncoded.replaceAll("&", "%26");
-            urlEncoded = urlEncoded.replaceAll("/", "%2F");
-            urlEncoded = urlEncoded.replaceAll(":", "%3A");
+//            String urlEncoded = message.replaceAll(" ", "%20");
+//            urlEncoded = urlEncoded.replaceAll(",", "%2C");
+//            urlEncoded = urlEncoded.replaceAll(".", "%2E");
+//            urlEncoded = urlEncoded.replaceAll("-", "%2D");
+//            urlEncoded = urlEncoded.replaceAll("&", "%26");
+//            urlEncoded = urlEncoded.replaceAll("/", "%2F");
+//            urlEncoded = urlEncoded.replaceAll(":", "%3A");
 
 
             String otp_url = "https://bloodtransfer.herokuapp.com/index.php/Oauth/help";
@@ -138,6 +138,7 @@ public class FilteredResult extends AppCompatActivity {
             RequestParams params = new RequestParams();
             params.put("mobile", number);
             params.put("msg", message);
+            Log.i("JSON", message);
 
             AsyncHttpClient client = new AsyncHttpClient();
             client.post(otp_url, params, new JsonHttpResponseHandler() {
@@ -167,7 +168,6 @@ public class FilteredResult extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
 
         }
 

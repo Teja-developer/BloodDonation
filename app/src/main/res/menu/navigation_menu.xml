@@ -6,15 +6,16 @@
         android:title="All Donors" />
     <item
         android:id="@+id/See_Requests"
+
         android:title="Requests"
         />
     <item
         android:id="@+id/Make_Requests"
-        android:title="Request for blood" />
+        android:title="Alll donors" />
 
     <item
         android:id="@+id/Become_donor"
-        android:title="Become Donor"/>
 
+        android:title="Become Donor"/>
 
 </menu>

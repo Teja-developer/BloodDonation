@@ -39,4 +39,5 @@ dependencies {
     implementation 'com.loopj.android:android-async-http:1.4.9'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'cz.msebera.android:httpclient:4.3.6'
+    implementation 'com.seatgeek:placesautocomplete:0.3-SNAPSHOT'
 }
